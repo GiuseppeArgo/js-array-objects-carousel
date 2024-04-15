@@ -30,8 +30,13 @@ let activeIndex = 0;
 
 printImages(images);
 
+printThumbs(images);
+
 const imgElems = document.querySelectorAll(".my-carousel-item");
 console.log(imgElems);
+
+const thumbElems = document.querySelectorAll(".my-thumbnail")
+console.log(thumbElems);
 
 imgElems[activeIndex].classList.add("active");
 
@@ -41,22 +46,26 @@ document.querySelector(".my-previous").addEventListener("click", showPrevious);
 
 function showNext() {
   imgElems[activeIndex].classList.remove("active");
+  thumbElems[activeIndex].classList.remove("active");
   if (activeIndex < imgElems.length - 1) {
     activeIndex++;
   } else {
     activeIndex = 0;
   }
   imgElems[activeIndex].classList.add("active");
+  thumbElems[activeIndex].classList.add("active");
 }
 
 function showPrevious() {
   imgElems[activeIndex].classList.remove("active");
+  thumbElems[activeIndex].classList.remove("active");
   if (activeIndex > 0) {
     activeIndex--;
   } else {
     activeIndex = imgElems.length - 1;
   }
   imgElems[activeIndex].classList.add("active");
+  thumbElems[activeIndex].classList.add("active");
 }
 
 function printImages(imagesToPrint) {
@@ -79,3 +88,18 @@ function printImages(imagesToPrint) {
     `;
   });
 }
+
+function printThumbs(imagesToPrint) {
+  const thumbsContainer = document.querySelector(".my-thumbnails");
+  imagesToPrint.forEach((image) => {
+    thumbsContainer.innerHTML += `
+    <img
+      class="img-fluid my-thumbnail"
+      src="./${image.image}"
+      alt="Thumbnail of Marvel's Spiderman Miles Morale picture"
+    />
+    `;
+  });
+}
+
+
