@@ -26,7 +26,14 @@ const images = [
   },
 ];
 
+let activeIndex = 0;
+
 printImages(images);
+
+const imgElems = document.querySelectorAll(".my-carousel-item");
+console.log(imgElems);
+
+imgElems[activeIndex].classList.add("active");
 
 function printImages(imagesToPrint) {
   const carouselContainer = document.querySelector(".my-carousel-images");
