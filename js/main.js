@@ -35,6 +35,30 @@ console.log(imgElems);
 
 imgElems[activeIndex].classList.add("active");
 
+document.querySelector(".my-next").addEventListener("click", showNext);
+
+document.querySelector(".my-previous").addEventListener("click", showPrevious);
+
+function showNext() {
+  imgElems[activeIndex].classList.remove("active");
+  if (activeIndex < imgElems.length - 1) {
+    activeIndex++;
+  } else {
+    activeIndex = 0;
+  }
+  imgElems[activeIndex].classList.add("active");
+}
+
+function showPrevious() {
+  imgElems[activeIndex].classList.remove("active");
+  if (activeIndex > 0) {
+    activeIndex--;
+  } else {
+    activeIndex = imgElems.length - 1;
+  }
+  imgElems[activeIndex].classList.add("active");
+}
+
 function printImages(imagesToPrint) {
   const carouselContainer = document.querySelector(".my-carousel-images");
   imagesToPrint.forEach((image) => {
